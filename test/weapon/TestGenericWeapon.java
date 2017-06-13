@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import gameplay.SimpleTimer;
+
 public class TestGenericWeapon
 {
 
@@ -48,6 +50,18 @@ public class TestGenericWeapon
 		gw.reload();
 		assertEquals(gw.maxAmmo, gw.actualAmmo);
 		
+	}
+	
+	@Test
+	public void testTimer()
+	{
+		GenericWeapon gw = new MockWeapon(10, 9, 8, 7);
+		SimpleTimer st = new SimpleTimer();
+		st.addTimeObserver(gw);
+		gw.fired = 2;
+		st.timeChanged();
+		assertEquals(1,gw.round);
+		assertEquals(0, gw.fired);
 	}
 }
 
