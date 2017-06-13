@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import gameplay.SimpleTimer;
+
 public class TestPlasmaCannon {
 
 	/**
@@ -16,30 +18,17 @@ public class TestPlasmaCannon {
 		PlasmaCannon pc = new PlasmaCannon();
 		assertNotNull(pc);
 		assertTrue(pc instanceof GenericWeapon);
-		//pc.damage(1);
-		
-		// damage = baseDamage * (actualAmmo / maxAmmo)
-		// damage = 50*(4/4) = 50 
-		
-		//assertEquals(50,pc.getDamage());
 	}
-	
+
 	/**
-	 * Weapons fired at targets too far away do 0 damage 
+     * Weapons fired at targets too far away do 0 damage 
 	 * as do weapons that have no ammo.
 	 */
 	@Test
 	public void testZeroDamage()
 	{
 		PlasmaCannon pc = new PlasmaCannon();
-		
-		// target too far than max range
-		//pc.damage(26);	
 		assertEquals(0,pc.damage(26));
-		
-		//weapon that have not ammo
-		//pc.setActualAmmo(0);
-		//pc.damage(1);
 		assertEquals(0,pc.damage(-1));
 		
 	}
@@ -49,23 +38,40 @@ public class TestPlasmaCannon {
 	 * even if fired at a target too far away.
 	 */
 	@Test
-	public void testUpdateAmmo()
+	public void testUpdateAmmo() 
 	{
+		SimpleTimer st = new SimpleTimer();
 		PlasmaCannon pc = new PlasmaCannon();
-		// without fire
+		st.addTimeObserver(pc);
+		// without fires
 		assertEquals(4, pc.getActualAmmo());
 		// first fire
-		pc.damage(1);	
+		pc.damage(10);	
+		st.timeChanged();
 		assertEquals(3, pc.getActualAmmo());
 		//second fire
-		pc.damage(2);
+		pc.damage(20);
+		st.timeChanged();
 		assertEquals(2, pc.getActualAmmo());
 		//third fire and target too far away
-		pc.damage(26);
-		assertEquals(1, pc.getActualAmmo());
-				
-	}
+		pc.damage(20);
+		st.timeChanged();
+		assertEquals(1, pc.getActualAmmo());		
+	} 
 	
+	@Test
+	public void testDamage()
+	{
+		SimpleTimer st = new SimpleTimer();
+		PlasmaCannon pc = new PlasmaCannon();
+		st.addTimeObserver(pc);
+		assertEquals(50, pc.damage(10));
+		st.timeChanged();
+		assertEquals(37, pc.damage(20));
+		st.timeChanged();
+		assertEquals(25, pc.damage(20));
+	}
+	 
 	/**
 	 * testReloaded
 	 * Weapons can be reloaded.
@@ -74,19 +80,10 @@ public class TestPlasmaCannon {
 	public void testReloaded()
 	{
 		PlasmaCannon pc = new PlasmaCannon();
-		
 		// fire PlasmaCannon 4 times and actualAmmo should be 6
-		pc.damage(1);
-		pc.damage(1);
-		pc.damage(1);
-		pc.damage(1);
-		assertEquals(0, pc.getActualAmmo());
-		
+		pc.actualAmmo = 0;
 		//reload pc
 		pc.reload();
-		assertEquals(pc.getMaxRange(), pc.getActualAmmo());
-		
+		assertEquals(pc.getMaxAmmo(), pc.getActualAmmo());
 	}
-	
-
 }
