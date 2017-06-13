@@ -1,20 +1,12 @@
 package weapon;
 
-public abstract class GenericWeapon implements Weapon
+public abstract class Attachment implements Weapon
 {
-	protected int baseDamage;
-	protected int maxRange;
-	protected int rateOfFire;
-	protected int maxAmmo;
-	protected int actualAmmo;
+	protected Weapon baseWeapon;
 	
-	public GenericWeapon(int bd, int rng, int rof, int ammo)
+	public Attachment(Weapon wpn)
 	{
-		baseDamage = bd;
-		maxRange = rng;
-		rateOfFire = rof;
-		maxAmmo = ammo;
-		actualAmmo = ammo;
+		baseWeapon = wpn;
 	}
 	/**
 	 * returns value baseDamage
@@ -22,7 +14,7 @@ public abstract class GenericWeapon implements Weapon
 	@Override
 	public int getBaseDamage()
 	{
-		return baseDamage;
+		return baseWeapon.getBaseDamage();
 	}
 	/**
 	 * return value of maxRange
@@ -30,7 +22,7 @@ public abstract class GenericWeapon implements Weapon
 	@Override
 	public int getMaxRange()
 	{
-		return maxRange;
+		return baseWeapon.getMaxRange();
 	}
 	/**
 	 * returns value of rateOfFire
@@ -38,7 +30,7 @@ public abstract class GenericWeapon implements Weapon
 	@Override
 	public int getRateOfFire()
 	{
-		return rateOfFire;
+		return baseWeapon.getRateOfFire();
 	}
 	/**
 	 * returns value of maxAmmo
@@ -46,7 +38,7 @@ public abstract class GenericWeapon implements Weapon
 	@Override
 	public int getMaxAmmo()
 	{
-		return maxAmmo;
+		return baseWeapon.getMaxAmmo();
 	}
 	/**
 	 * returns value of actualAmmo
@@ -54,7 +46,7 @@ public abstract class GenericWeapon implements Weapon
 	@Override
 	public int getActualAmmo()
 	{
-		return actualAmmo;
+		return baseWeapon.getActualAmmo();
 	}
 	@Override
 	/**
@@ -64,7 +56,7 @@ public abstract class GenericWeapon implements Weapon
 	 */
 	public int damage(int distance)
 	{
-		return baseDamage;
+		return 0;
 	}
 	/**
 	 * checks that distance is valid and less than max range
@@ -72,12 +64,7 @@ public abstract class GenericWeapon implements Weapon
 	@Override
 	public boolean checkRange(int distance)
 	{
-		if (distance <0 || distance > maxRange)
-		{
-			return false;
-		}
-		else
-			return true;
+		return baseWeapon.checkRange(distance);
 	}
 	/**
 	 * resets actualAmmo to maxAmmo
@@ -85,7 +72,12 @@ public abstract class GenericWeapon implements Weapon
 	@Override
 	public void reload()
 	{
-		actualAmmo = maxAmmo;		
+			
 	}
-
+	@Override
+	public void updateTime(int time)
+	{
+		baseWeapon.updateTime(time);
+		
+	}
 }

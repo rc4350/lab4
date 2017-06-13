@@ -7,6 +7,8 @@ public abstract class GenericWeapon implements Weapon
 	protected int rateOfFire;
 	protected int maxAmmo;
 	protected int actualAmmo;
+	protected int round;
+	protected int fired;
 	
 	public GenericWeapon(int bd, int rng, int rof, int ammo)
 	{
@@ -15,6 +17,8 @@ public abstract class GenericWeapon implements Weapon
 		rateOfFire = rof;
 		maxAmmo = ammo;
 		actualAmmo = ammo;
+		round = 0;
+		fired = 0;
 	}
 	/**
 	 * returns value baseDamage
@@ -80,12 +84,32 @@ public abstract class GenericWeapon implements Weapon
 			return true;
 	}
 	/**
+	 * checks if number of times fired in round has exceeded rate of fire
+	 * @return true if able to fire
+	 */
+	public boolean rofCheck()
+	{
+		if (fired < rateOfFire)
+		{
+			return true;
+		}
+		else
+			return false;
+	}
+	/**
 	 * resets actualAmmo to maxAmmo
 	 */
 	@Override
 	public void reload()
 	{
 		actualAmmo = maxAmmo;		
+	}
+	
+	@Override
+	public void updateTime(int time)
+	{
+		round = time;
+		fired = 0;
 	}
 
 }

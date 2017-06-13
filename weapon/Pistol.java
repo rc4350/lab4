@@ -14,11 +14,12 @@ public class Pistol extends GenericWeapon
 	@Override
 	public int damage(int distance)
 	{
-		if(super.checkRange(distance) && super.actualAmmo>0)
+		if(super.checkRange(distance) && super.actualAmmo>0 &&super.rofCheck())
 		{
 			int dmg;
 			dmg = (int) ((float)super.baseDamage *((float)((super.maxRange-distance)+5)/(float)super.maxRange));
 			super.actualAmmo--;
+			super.fired++;
 			return dmg;
 			
 		}

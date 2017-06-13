@@ -1,6 +1,8 @@
 package weapon;
 
-public interface Weapon
+import gameplay.TimeObserver;
+
+public interface Weapon extends TimeObserver
 {
 	public int damage(int distance);
 	public void reload();

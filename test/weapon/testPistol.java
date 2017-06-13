@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import gameplay.SimpleTimer;
+
 public class testPistol
 {
 
@@ -39,5 +41,17 @@ public class testPistol
 		pl.reload();
 		assertEquals(8, pl.damage(10));
 		assertEquals(9, pl.actualAmmo);
+	}
+	@Test
+	public void testRateOfFire()
+	{
+		Pistol pl = new Pistol();
+		SimpleTimer st = new SimpleTimer();
+		st.addTimeObserver(pl);
+		assertEquals(8, pl.damage(10));
+		assertEquals(8, pl.damage(10));
+		assertEquals(0, pl.damage(10));
+		st.timeChanged();
+		assertEquals(8, pl.damage(10));
 	}
 }
