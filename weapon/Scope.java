@@ -12,9 +12,9 @@ public class Scope extends Attachment
 	@Override
 	public int damage(int distance)
 	{
-		int moddmg = super.baseWeapon.damage(distance);
-		int dmg =(int)( (float)moddmg*(1.0+( ( (float)baseWeapon.getMaxRange()-(float)distance )/(float)baseWeapon.getMaxRange() )));
-		return dmg;
+		int dmg = super.baseWeapon.damage(distance);
+		int moddmg =(int)( (float)dmg*(1.0+( ( (float)baseWeapon.getMaxRange()-(float)distance )/(float)baseWeapon.getMaxRange() )));
+		return moddmg;
 		
 		
 		
