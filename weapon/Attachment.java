@@ -56,7 +56,7 @@ public abstract class Attachment implements Weapon
 	 */
 	public int damage(int distance)
 	{
-		return 0;
+		return baseWeapon.damage(distance);
 	}
 	/**
 	 * checks that distance is valid and less than max range
@@ -72,7 +72,7 @@ public abstract class Attachment implements Weapon
 	@Override
 	public void reload()
 	{
-			
+		baseWeapon.reload();
 	}
 	@Override
 	public void updateTime(int time)

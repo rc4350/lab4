@@ -21,7 +21,6 @@ public class testPistol
 	{
 		Pistol pl = new Pistol();
 		assertEquals(8, pl.damage(10));
-		assertEquals(9, pl.actualAmmo);
 		assertEquals(2, pl.damage(24));
 	}
 	@Test

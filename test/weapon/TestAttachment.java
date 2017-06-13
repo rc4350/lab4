@@ -35,6 +35,16 @@ public class TestAttachment
 		assertTrue(at.checkRange(25));
 		assertFalse(at.checkRange(26));
 	}
+	@Test
+	public void testReload()
+	{
+		Pistol pl = new Pistol();
+		Attachment at = new MockAttachment(pl);
+		at.damage(10);
+		assertEquals(at.getMaxAmmo()-1,at.getActualAmmo());
+		at.reload();
+		assertEquals(at.getMaxAmmo(), at.getActualAmmo());
+	}
 
 }
 
