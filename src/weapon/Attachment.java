@@ -1,6 +1,7 @@
 package weapon;
 
 import exceptions.MyNewException;
+import src.weapon.Override;
 
 public abstract class Attachment implements Weapon
 {
@@ -16,6 +17,14 @@ public abstract class Attachment implements Weapon
 		baseWeapon = wpn;
 		baseWeapon.increaseAttachmentCount();
 		
+	}
+	/**
+	 * set the new value for actualAmmo
+	 */
+	@Override
+	public void setActualAmmo(int value) 
+	{
+		baseWeapon.setActualAmmo(value);
 	}
 	/**
 	 * returns value baseDamage

@@ -6,6 +6,7 @@ public interface Weapon extends TimeObserver
 {
 	public int damage(int distance);
 	public void reload();
+	public void setActualAmmo(int value);
 	public int getBaseDamage();
 	public int getMaxRange();
 	public int getRateOfFire();

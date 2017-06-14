@@ -23,6 +23,15 @@ public abstract class GenericWeapon implements Weapon
 		attachmentCount = 0;
 	}
 	/**
+	 * setActualAmmo
+	 * set the new value for actualAmmo
+	 * @param vaue
+	 */
+	public void setActualAmmo(int value)
+	{
+		actualAmmo = value;
+	}
+	/**
 	 * returns value baseDamage
 	 */
 	@Override
