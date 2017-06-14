@@ -1,15 +1,19 @@
 package weapon;
-
+/**
+ * abstract implementation of Weapon interface
+ * @author Ryan Campbell, Deema Alrashdan
+ *
+ */
 public abstract class GenericWeapon implements Weapon
 {
-	protected int baseDamage;
-	protected int maxRange;
-	protected int rateOfFire;
-	protected int maxAmmo;
-	protected int actualAmmo;
-	protected int round;
-	protected int fired;
-	protected int attachmentCount;
+	protected int baseDamage;		//holds base damage
+	protected int maxRange;			//holds max range of weapon
+	protected int rateOfFire;		//holds rate of fire
+	protected int maxAmmo;			//holds max ammo of weapon
+	protected int actualAmmo;		//holds current ammo of weapon
+	protected int round;			//keeps track of round
+	protected int fired;			//keeps track of attacks made with weapon during a round
+	protected int attachmentCount;	//tracks number of attachments on base weapon
 	
 	public GenericWeapon(int bd, int rng, int rof, int ammo)
 	{

@@ -2,6 +2,7 @@ package weapon;
 
 /**
  * PlasmaCannon class is kind of weapon
+ * @author Ryan Campbell, Deema Alrashdan
  */
 public class PlasmaCannon extends GenericWeapon
 {

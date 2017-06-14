@@ -1,5 +1,9 @@
 package weapon;
-
+/**
+ * Pistol weapon type
+ * @author Ryan Campbell, Deema Alrashdan
+ *
+ */
 public class Pistol extends GenericWeapon
 {
 
@@ -9,7 +13,7 @@ public class Pistol extends GenericWeapon
 	}
 	
 	/**
-	 * methodfor pistol's damage calculation
+	 * method for pistol's damage calculation
 	 */
 	@Override
 	public int damage(int distance)
