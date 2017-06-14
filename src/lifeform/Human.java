@@ -24,6 +24,7 @@ public class Human extends LifeForm
 		{
 			setArmorPoints(0);
 		}
+		super.setAttackPoints(5);
 		
 	}
 	/**

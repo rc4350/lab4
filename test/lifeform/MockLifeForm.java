@@ -1,4 +1,5 @@
 package lifeform;
+
 /**
  * mock class to test abstract LifeForm class
  * @author Ryan Campbell
@@ -14,5 +15,6 @@ public class MockLifeForm extends LifeForm
 	{
 		super(name, hp, ap);
 	}
+	
 
 }

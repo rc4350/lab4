@@ -31,6 +31,7 @@ public class Alien extends LifeForm implements TimeObserver
 		super(name, life);
 		maxLifePoints = life;
 		recoveryBehavior = rb;
+		super.setAttackPoints(10);
 		
 	}
 	/**

@@ -35,6 +35,13 @@ public class TestHuman
 		bob.takeHit(7);
 		assertEquals(100, bob.currentLifePoints);
 	}
+	@Test
+	public void testAttackDefault()
+	{
+		Human bob = new Human("Bob", 100, 0);
+		bob.takeHit(bob.attack());
+		assertEquals(95, bob.currentLifePoints);
+	}
 	//lab 1-2 tests
 	@Test
 	public void testConstruct()

@@ -89,6 +89,7 @@ public class SimpleTimer extends Thread implements Timer
 			return theObserver.get(0);
 	}
 
+	@Override
 	public int getRound()
 	{
 		// TODO Auto-generated method stub
