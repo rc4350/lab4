@@ -1,5 +1,8 @@
 package weapon;
-
+/**
+ * Stabilizer is a weapon attachment
+ * @author Ryan Campbell, Deema Alrashdan
+ */
 import exceptions.MyNewException;
 
 public class Stabilizer extends Attachment
@@ -9,7 +12,11 @@ public class Stabilizer extends Attachment
 	{
 		super(wpn);
 	}
-	
+	/**
+	 * Stabilizer damage method
+	 * calls damage of baseWeapon and modifies returned value
+	 * @param distance distance between attacker and target
+	 */
 	@Override
 	public int damage(int distance)
 	{

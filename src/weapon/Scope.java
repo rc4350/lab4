@@ -1,5 +1,8 @@
 package weapon;
-
+/**
+ * Scope is a weapon attachment
+ * @author Ryan Campbell, Deema Alrashdan
+ */
 import exceptions.MyNewException;
 
 public class Scope extends Attachment
@@ -10,7 +13,11 @@ public class Scope extends Attachment
 		super(wpn);
 	
 	}
-
+	/**
+	 * damage method for scope
+	 * gets calls damage of baseweapon and modifies damage value
+	 * @param distance distance between attacker and target
+	 */
 	@Override
 	public int damage(int distance)
 	{
