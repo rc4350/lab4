@@ -3,6 +3,7 @@ package weapon;
 import gameplay.TimeObserver;
 /**
  * Weapon class holds by lifeform
+ * @author Ryan Campbell, Deema Alrashdan
  */
 
 public interface Weapon extends TimeObserver
