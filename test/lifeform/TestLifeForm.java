@@ -3,7 +3,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import environment.Range;
 import gameplay.SimpleTimer;
+import weapon.Pistol;
+
 /**
  *  Test LifeForm class
  * @author Ryan Campbell
@@ -11,6 +14,130 @@ import gameplay.SimpleTimer;
  */
 
 public class TestLifeForm {
+	/**
+	 * testPickup
+	 * can pickup a weapon
+	 */
+	@Test
+	public void testPickupWeapon()
+	{
+		LifeForm entity;
+		entity = new MockLifeForm("Bob", 40, 10);
+		Pistol pl = new Pistol();
+		
+		entity.pickUpWeapon(pl);
+		assertEquals(entity.baseWeapon, pl);
+	}
+	
+	/**
+	 * testCanNotPickupWeapon
+	 * can't pickup a weapon if already carrying a weapon
+	 */
+	@Test
+	public void testCanNotPickupWeapon()
+	{
+		LifeForm entity;
+		entity = new MockLifeForm("Bob", 40, 10);
+		Pistol pl = new Pistol();
+		Pistol pl2 = new Pistol();
+		entity.pickUpWeapon(pl);
+		entity.pickUpWeapon(pl2);
+		assertEquals(entity.baseWeapon, pl);
+	}
+	
+	/**
+	 * testDropWeapon
+	 * life form drop the weapon
+	 */
+	@Test
+	public void testDropWeapon()
+	{
+		LifeForm entity;
+		entity = new MockLifeForm("Bob", 40, 10);
+		Pistol pl = new Pistol();
+		entity.pickUpWeapon(pl);
+		entity.dropWeapon();
+		assertEquals(entity.baseWeapon, null);
+	}
+	
+	/**
+	 * testWeaponForDamageWithammo
+	 * uses weapon for damage if has ammo
+	 */
+	@Test
+	public void testWeaponForDamageWithammo()
+	{
+		Range range = new Range();	
+		Range.distance = 10;
+		LifeForm entity, entity2;
+		entity = new MockLifeForm("Bob", 40, 10);
+		entity2 = new MockLifeForm("Sponge", 40, 10);
+		Pistol pl = new Pistol();
+		entity.pickUpWeapon(pl);
+		entity.attack(entity2, 10);
+		assertEquals(32,entity2.currentLifePoints);
+        assertEquals(9,pl.getActualAmmo());
+	}
+	
+	/**
+	 * testWeaponForDamageWithOutAmmo
+	 * uses weapon for damage if has not ammo
+	 * or doesn't have a weapon
+	 */
+	@Test
+	public void testWeaponForDamageWithOutAmmo()
+	{
+		Range range = new Range();		
+		Range.distance = 10;
+		LifeForm entity, entity2;
+		entity = new MockLifeForm("Bob", 40, 10);
+		entity2 = new MockLifeForm("Sponge", 40, 10);
+		//doesn't have a weapon
+		Range.distance = 3;
+		entity.attack(entity2, 10);
+		assertEquals(30,entity2.currentLifePoints);
+		//weapon has no ammo
+		Range.distance = 4;
+		Pistol pl = new Pistol();
+		pl.setActualAmmo(0);
+		entity.pickUpWeapon(pl);
+		entity.attack(entity2, 10);
+		assertEquals(20,entity2.currentLifePoints);
+        assertEquals(0,pl.getActualAmmo());
+	}
+	
+	/**
+	 * testWeaponForDamageWithammo
+	 * attack strength does 0 damage if range > 10 feet
+	 */
+	@Test
+	public void attackStrengthDoesZeroDamage()
+	{
+		Range range = new Range();		
+		Range.distance = 10;
+		LifeForm entity, entity2;
+		entity = new MockLifeForm("Bob", 40, 10);
+		entity2 = new MockLifeForm("Sponge", 40, 10);
+		Pistol pl = new Pistol();
+		pl.setActualAmmo(0);
+		entity.pickUpWeapon(pl);
+		entity.attack(entity2, 10);
+		assertEquals(40,entity2.currentLifePoints);
+        assertEquals(0,pl.getActualAmmo());
+	}
+	
+	/**
+	 * reloadWeapon
+	 * can reload a weapon
+	 */
+	@Test
+	public void reloadWeapon()
+	{
+		Pistol pl = new Pistol();
+		pl.setActualAmmo(0);
+		pl.reload();
+        assertEquals(10,pl.getActualAmmo());
+	}
 
 	//lab 3 tests
 	@Test

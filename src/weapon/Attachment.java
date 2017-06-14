@@ -1,7 +1,7 @@
 package weapon;
 
 import exceptions.MyNewException;
-import src.weapon.Override;
+
 
 public abstract class Attachment implements Weapon
 {
