@@ -1,15 +1,23 @@
 package lifeform;
+
+import gameplay.SimpleTimer;
+import gameplay.TimeObserver;
+import gameplay.Timer;
+
 /**
  * 
  * Keeps track of the information associated with a simple life form.
  * Also provides the functionality related to the life form
  *@author Ryan Campbell
  */
-public class LifeForm {
+public class LifeForm implements TimeObserver
+{
 
 	protected String myName;
 	protected int currentLifePoints;
 	protected int attackPoints;
+	protected Timer tracker;
+	protected int round;
 	/**
 	 * create an instance
 	 * 
@@ -74,4 +82,16 @@ public class LifeForm {
 	{
 		attackPoints = sap;
 	}
+	public void addTimer(SimpleTimer timr)
+	{
+		tracker = timr;
+		
+	}
+	@Override
+	public void updateTime(int time)
+	{
+		round = tracker.getRound();
+		
+	}
 }
+

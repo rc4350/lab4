@@ -2,6 +2,8 @@ package lifeform;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import gameplay.SimpleTimer;
 /**
  *  Test LifeForm class
  * @author Ryan Campbell
@@ -10,6 +12,19 @@ import org.junit.Test;
 
 public class TestLifeForm {
 
+	//lab 3 tests
+	@Test
+	public void testTracker()
+	{
+		MockLifeForm mf = new MockLifeForm("Bob", 40);
+		SimpleTimer timr = new SimpleTimer();
+		mf.addTimer(timr);
+		timr.addTimeObserver(mf);
+		assertEquals(0, mf.round);
+		timr.timeChanged();
+		assertEquals(1, mf.round);
+		
+	}
 	
 	@Test
 	public void testAttack()
