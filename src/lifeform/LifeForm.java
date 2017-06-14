@@ -3,6 +3,8 @@ package lifeform;
 import gameplay.SimpleTimer;
 import gameplay.TimeObserver;
 import gameplay.Timer;
+import weapon.Weapon;
+
 
 /**
  * 
@@ -12,12 +14,35 @@ import gameplay.Timer;
  */
 public class LifeForm implements TimeObserver
 {
-
 	protected String myName;
 	protected int currentLifePoints;
 	protected int attackPoints;
 	protected Timer tracker;
 	protected int round;
+    protected Weapon baseWeapon;
+	
+	/**
+	 * pickUpWeapon
+	 * Life form pickup a weapon if doesn't have a weapon
+	 * @param wp the weapon to pickup
+	 */
+	public void pickUpWeapon(Weapon wp)
+	{
+		if(baseWeapon == null)
+		{
+			baseWeapon = wp;
+		}
+	}
+	
+	/**
+	 * dropWeapon
+	 * Life form drop the weapon 
+	 */
+	public void dropWeapon()
+	{
+		baseWeapon = null;
+	}
+	
 	/**
 	 * create an instance
 	 * 
