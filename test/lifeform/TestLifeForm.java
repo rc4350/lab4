@@ -74,7 +74,7 @@ public class TestLifeForm {
 		entity2 = new MockLifeForm("Sponge", 40, 10);
 		Pistol pl = new Pistol();
 		entity.pickUpWeapon(pl);
-		entity.attack(entity2, 10);
+		entity2.takeHit(entity.attack());
 		assertEquals(32,entity2.currentLifePoints);
         assertEquals(9,pl.getActualAmmo());
 	}
@@ -94,14 +94,14 @@ public class TestLifeForm {
 		entity2 = new MockLifeForm("Sponge", 40, 10);
 		//doesn't have a weapon
 		Range.distance = 3;
-		entity.attack(entity2, 10);
+		entity2.takeHit(entity.attack());
 		assertEquals(30,entity2.currentLifePoints);
 		//weapon has no ammo
 		Range.distance = 4;
 		Pistol pl = new Pistol();
 		pl.setActualAmmo(0);
 		entity.pickUpWeapon(pl);
-		entity.attack(entity2, 10);
+		entity2.takeHit(entity.attack());
 		assertEquals(20,entity2.currentLifePoints);
         assertEquals(0,pl.getActualAmmo());
 	}
@@ -121,7 +121,7 @@ public class TestLifeForm {
 		Pistol pl = new Pistol();
 		pl.setActualAmmo(0);
 		entity.pickUpWeapon(pl);
-		entity.attack(entity2, 10);
+		entity2.takeHit(entity.attack());
 		assertEquals(40,entity2.currentLifePoints);
         assertEquals(0,pl.getActualAmmo());
 	}
