@@ -1,9 +1,11 @@
 package weapon;
 
+import exceptions.MyNewException;
+
 public class Scope extends Attachment
 {
 
-	public Scope(Weapon wpn)
+	public Scope(Weapon wpn) throws MyNewException
 	{
 		super(wpn);
 	

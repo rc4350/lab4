@@ -12,4 +12,6 @@ public interface Weapon extends TimeObserver
 	public int getMaxAmmo();
 	public int getActualAmmo();
 	public boolean checkRange(int distance);
+	public int getAttachmentCount();
+	public void increaseAttachmentCount();
 }

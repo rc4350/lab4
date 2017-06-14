@@ -4,11 +4,13 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import exceptions.MyNewException;
+
 public class TestAttachment
 {
 
 	@Test
-	public void testConstruct()
+	public void testConstruct() throws MyNewException
 	{
 		Pistol pl = new Pistol();
 		Attachment at = new MockAttachment(pl);
@@ -17,7 +19,7 @@ public class TestAttachment
 		
 	}
 	@Test
-	public void testGetters()
+	public void testGetters() throws MyNewException
 	{
 		Pistol pl = new Pistol();
 		Attachment at = new MockAttachment(pl);
@@ -28,7 +30,7 @@ public class TestAttachment
 		assertEquals(pl.getActualAmmo(), at.getActualAmmo());
 	}
 	@Test
-	public void testRange()
+	public void testRange() throws MyNewException
 	{
 		Pistol pl = new Pistol();
 		Attachment at = new MockAttachment(pl);
@@ -36,7 +38,7 @@ public class TestAttachment
 		assertFalse(at.checkRange(26));
 	}
 	@Test
-	public void testReload()
+	public void testReload() throws MyNewException
 	{
 		Pistol pl = new Pistol();
 		Attachment at = new MockAttachment(pl);
@@ -50,7 +52,7 @@ public class TestAttachment
 
 class MockAttachment extends Attachment
 {
-	public MockAttachment(Weapon wpn)
+	public MockAttachment(Weapon wpn) throws MyNewException
 	{
 		super(wpn);
 	}

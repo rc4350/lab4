@@ -9,6 +9,7 @@ public abstract class GenericWeapon implements Weapon
 	protected int actualAmmo;
 	protected int round;
 	protected int fired;
+	protected int attachmentCount;
 	
 	public GenericWeapon(int bd, int rng, int rof, int ammo)
 	{
@@ -19,6 +20,7 @@ public abstract class GenericWeapon implements Weapon
 		actualAmmo = ammo;
 		round = 0;
 		fired = 0;
+		attachmentCount = 0;
 	}
 	/**
 	 * returns value baseDamage
@@ -111,5 +113,20 @@ public abstract class GenericWeapon implements Weapon
 		round = time;
 		fired = 0;
 	}
-
+	/**
+	 * gets the number of current attachments
+	 */
+	@Override
+	public int getAttachmentCount()
+	{
+		return attachmentCount;
+	}
+	/**
+	 * increases attachment count
+	 */
+	@Override
+	public void increaseAttachmentCount()
+	{
+		attachmentCount++;
+	}
 }

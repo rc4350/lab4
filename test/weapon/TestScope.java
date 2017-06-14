@@ -4,11 +4,13 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import exceptions.MyNewException;
+
 public class TestScope
 {
 
 	@Test
-	public void testConstruct()
+	public void testConstruct() throws MyNewException
 	{
 		Pistol pl = new Pistol();
 		Attachment scp = new Scope(pl);
@@ -17,7 +19,7 @@ public class TestScope
 	}
 
 	@Test
-	public void testDamage()
+	public void testDamage() throws MyNewException
 	{
 		Pistol pl = new Pistol();
 		Scope scp = new Scope(pl);

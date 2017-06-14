@@ -1,12 +1,21 @@
 package weapon;
 
+import exceptions.MyNewException;
+
 public abstract class Attachment implements Weapon
 {
 	protected Weapon baseWeapon;
 	
-	public Attachment(Weapon wpn)
+	public Attachment(Weapon wpn) throws MyNewException
 	{
+		if(wpn.getAttachmentCount() >= 2)
+		{
+			throw new MyNewException();
+		}
+		else
 		baseWeapon = wpn;
+		baseWeapon.increaseAttachmentCount();
+		
 	}
 	/**
 	 * returns value baseDamage
@@ -74,10 +83,30 @@ public abstract class Attachment implements Weapon
 	{
 		baseWeapon.reload();
 	}
+	/**
+	 * calls baseWeapon.updateTime
+	 */
 	@Override
 	public void updateTime(int time)
 	{
 		baseWeapon.updateTime(time);
 		
 	}
+	/**
+	 *  get's base weapon attachment count
+	 */
+	@Override
+	public int getAttachmentCount()
+	{
+		return baseWeapon.getAttachmentCount();
+	}
+	/**
+	 * increase base weapon's attachment count
+	 */
+	@Override
+	public void increaseAttachmentCount()
+	{
+		baseWeapon.increaseAttachmentCount();
+	}
+	
 }

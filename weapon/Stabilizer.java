@@ -1,9 +1,11 @@
 package weapon;
 
+import exceptions.MyNewException;
+
 public class Stabilizer extends Attachment
 {
 
-	public Stabilizer(Weapon wpn)
+	public Stabilizer(Weapon wpn) throws MyNewException
 	{
 		super(wpn);
 	}
