@@ -93,6 +93,29 @@ public class LifeForm implements TimeObserver
 			currentLifePoints = 0;
 		}
 	}
+	/**
+	 * attack method for when weapon is equipped
+	 * @param distance distance between attacking and receiving lifeforms
+	 * @return damage value of weapon
+	 */
+	public int attack(int distance)
+	{
+		if (currentLifePoints == 0)
+		{
+			return 0;
+		}
+		// TODO Auto-generated method stub
+		else if (baseWeapon == null)
+			return attackPoints;
+		else
+		{
+			return baseWeapon.damage(distance);
+		}
+	}
+	/**
+	 * attack method for no weapon
+	 * @return lifeForm's  attack strength
+	 */
 	public int attack()
 	{
 		if (currentLifePoints == 0)
@@ -100,7 +123,7 @@ public class LifeForm implements TimeObserver
 			return 0;
 		}
 		// TODO Auto-generated method stub
-		else
+		else 
 			return attackPoints;
 	}
 	protected void setAttackPoints(int sap)

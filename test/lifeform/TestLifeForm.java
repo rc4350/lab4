@@ -67,14 +67,13 @@ public class TestLifeForm {
 	@Test
 	public void testWeaponForDamageWithammo()
 	{
-		Range range = new Range();	
 		Range.distance = 10;
 		LifeForm entity, entity2;
 		entity = new MockLifeForm("Bob", 40, 10);
 		entity2 = new MockLifeForm("Sponge", 40, 10);
 		Pistol pl = new Pistol();
 		entity.pickUpWeapon(pl);
-		entity2.takeHit(entity.attack());
+		entity2.takeHit(entity.attack(Range.distance));
 		assertEquals(32,entity2.currentLifePoints);
         assertEquals(9,pl.getActualAmmo());
 	}
@@ -87,7 +86,7 @@ public class TestLifeForm {
 	@Test
 	public void testWeaponForDamageWithOutAmmo()
 	{
-		Range range = new Range();		
+		
 		Range.distance = 10;
 		LifeForm entity, entity2;
 		entity = new MockLifeForm("Bob", 40, 10);
@@ -113,7 +112,7 @@ public class TestLifeForm {
 	@Test
 	public void attackStrengthDoesZeroDamage()
 	{
-		Range range = new Range();		
+				
 		Range.distance = 10;
 		LifeForm entity, entity2;
 		entity = new MockLifeForm("Bob", 40, 10);
@@ -121,7 +120,7 @@ public class TestLifeForm {
 		Pistol pl = new Pistol();
 		pl.setActualAmmo(0);
 		entity.pickUpWeapon(pl);
-		entity2.takeHit(entity.attack());
+		entity2.takeHit(entity.attack(Range.distance));
 		assertEquals(40,entity2.currentLifePoints);
         assertEquals(0,pl.getActualAmmo());
 	}

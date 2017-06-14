@@ -1,5 +1,8 @@
 package weapon;
-
+/**
+ * Tests for Attachment Class
+ * @author Ryan Campbell, Deema Alrashdan
+ */
 import static org.junit.Assert.*;
 
 import org.junit.Test;

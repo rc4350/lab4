@@ -1,5 +1,8 @@
 package weapon;
-
+/**
+ * tests for scope class
+ * @author Ryan Campbell, Deema Alrashdan
+ */
 import static org.junit.Assert.*;
 
 import org.junit.Test;

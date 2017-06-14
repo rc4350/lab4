@@ -1,5 +1,8 @@
 package weapon;
-
+/**
+ * Tests for generic weapon class, also serves as interface test instead of using a mock class
+ * @author Ryan Campbell, Deema Alrashdan
+ */
 import static org.junit.Assert.*;
 
 import org.junit.Test;
