@@ -10,7 +10,7 @@ import weapon.Weapon;
  * 
  * Keeps track of the information associated with a simple life form.
  * Also provides the functionality related to the life form
- *@author Ryan Campbell
+ *@author Ryan Campbell, Deema Alrashdan
  */
 public class LifeForm implements TimeObserver
 {
